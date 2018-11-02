@@ -15,6 +15,7 @@ namespace OKI_LAB_1_Console
             forOps.IsNeedToAddZeroToTheEnd = true;
             OpsWithNumbers ops = new OpsWithNumbers(forOps);
             Console.WriteLine(ops.TransformFrom10NumSysTo2NumSys());
+            Console.WriteLine(ops.TransformFrom10NumSysTo8NumSys());
         }
     }
 }

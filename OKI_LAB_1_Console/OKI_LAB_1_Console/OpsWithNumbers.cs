@@ -50,5 +50,35 @@ namespace OKI_LAB_1_Console
 
             return result;
         }
+
+        public string TransformFrom10NumSysTo8NumSys()
+        {
+            int i = 0;
+            int tempResult = Int32.Parse(TransformFrom10NumSysTo2NumSys()), tempResult1 = 0;
+            string result = "";
+            while(tempResult > 0)
+            {
+                if(i == 0)
+                { tempResult1 += 1 * (tempResult % 10); }
+                else if(i == 1)
+                { tempResult += 2 * (tempResult % 10); }
+                else
+                {
+                    tempResult1 += 4 * (tempResult % 10);
+                    i = 0;
+                }
+                tempResult /= 10;
+                i++;
+            }
+            result = tempResult1.ToString();
+            return result;
+        }
+
+        public string TransformFrom8NumSysTo10NumSys()
+        {
+            string result = "";
+
+            return result;
+        }
     }
 }
