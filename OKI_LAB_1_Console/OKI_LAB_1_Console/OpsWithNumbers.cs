@@ -14,6 +14,11 @@ namespace OKI_LAB_1_Console
             nums = getPropertiesNum;
         }
 
+        public string AddingZeroToEnd(string str)
+        {
+
+        }
+
         public string TransformFrom10NumSysTo2NumSys()
         {
             const int COUNT_BITS_IN_BYTE = 8;
@@ -39,14 +44,7 @@ namespace OKI_LAB_1_Console
                 result += s.ToString();
             }
 
-            int sizeResultBeforeAdding = result.Length;
-            if (nums.IsNeedToAddZeroToTheEnd)
-            {
-                for (int i = 0; i < COUNT_BITS_IN_BYTE - sizeResultBeforeAdding; i++)
-                {
-                    result = result.Insert(0, "0");
-                }
-            }
+            
 
             return result;
         }
