@@ -11,7 +11,7 @@ namespace OKI_LAB_1_Console
         static void Main(string[] args)
         {
             Numbers forOps = new Numbers();
-            forOps.Number = 4;
+            forOps.Number = 855;
             forOps.IsNeedToAddZeroToTheEnd = true;
             OpsWithNumbers ops = new OpsWithNumbers(forOps);
             Console.WriteLine(ops.TransformFrom10NumSysTo2NumSys());
