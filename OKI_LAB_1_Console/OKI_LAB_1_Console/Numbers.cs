@@ -8,10 +8,10 @@ namespace OKI_LAB_1_Console
 {
     class Numbers
     {
-        private int startedNumSystem, finishedNumSystem;
-        public int Number { get; set; }
+        private UInt64 startedNumSystem, finishedNumSystem;
+        public UInt64 Number { get; set; }
 
-        public int StartedNumSystem
+        public UInt64 StartedNumSystem
         {
             set
             {
@@ -21,27 +21,27 @@ namespace OKI_LAB_1_Console
                 }
                 else
                 {
-                    startedNumSystem = value;
+                    startedNumSystem = (UInt64)value;
                 }
             }
             get { return startedNumSystem; }
         }
 
-        public int FinishedNumSystem
+        public UInt64 FinishedNumSystem
         {
             set
-            {
-                if (value != 2 || value != 8 || value != 10 || value != 16)
-                {
-                    //Calling exception
-                }
-                else if(value == startedNumSystem)
+            { 
+                if(value == startedNumSystem)
                 {
                     //Calling other type exception
                 }
+                else if (value != 2 || value != 8 || value != 10 || value != 16)
+                {
+                    //Calling exception
+                }
                 else
                 {
-                    finishedNumSystem = value;
+                    finishedNumSystem = (UInt64)value;
                 }
             }
             get { return finishedNumSystem; }

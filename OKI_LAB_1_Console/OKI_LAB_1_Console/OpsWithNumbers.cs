@@ -26,7 +26,7 @@ namespace OKI_LAB_1_Console
         public string TransformFrom10NumSysTo2NumSys()
         {
 
-            int copiedNum = nums.Number;
+            UInt64 copiedNum = nums.Number;
             char[] temp;
             string result = "";
 
@@ -55,9 +55,9 @@ namespace OKI_LAB_1_Console
 
         public string TransformFrom10NumSysTo8NumSys()
         {
-            List<int> results = new List<int>();
+            List<UInt64> results = new List<UInt64>();
             int i = 0;
-            int tempResult = Int32.Parse(TransformFrom10NumSysTo2NumSys()), tempResult1 = 0;
+            UInt64 tempResult = UInt64.Parse(TransformFrom10NumSysTo2NumSys()), tempResult1 = 0;
             string result = "";
             while (tempResult > 0)
             {
@@ -90,8 +90,8 @@ namespace OKI_LAB_1_Console
                     i++;
                 }
             }
-            //Поменять местами 1 и 4 элемент, 2 и 3, ну ты понял)))
-            foreach(int nums in results)
+            results.Reverse(0, results.Count);
+            foreach(UInt64 nums in results)
             {
                 result += nums.ToString();
             }
@@ -102,6 +102,24 @@ namespace OKI_LAB_1_Console
         {
             string result = "";
 
+            List<UInt64> results = new List<UInt64>();
+
+            UInt64 numcopied = nums.Number, tempResult = 0;
+
+            while(numcopied > 0)
+            {
+                results.Add(numcopied % 10);
+                numcopied /= 10;
+            }
+            results.Reverse();
+            int j = 0;
+            for(int i = results.Count; i > 0; i--)
+            {
+                tempResult += results[j] * (UInt64)Math.Pow(8, i-1);
+                
+                j++;
+            }
+            result += tempResult.ToString();
             return result;
         }
     }
