@@ -11,10 +11,10 @@ namespace OKI_LAB_1_Console
         static void Main(string[] args)
         {
             Numbers forOps = new Numbers();
-            forOps.Number = 4000;
+            forOps.Number = "11100";
             forOps.IsNeedToAddZeroToTheEnd = false;
             OpsWithNumbers ops = new OpsWithNumbers(forOps);
-            Console.WriteLine(ops.TransformFrom8NumSysTo10NumSys());
+            Console.WriteLine(ops.TransformFrom2NumSysTo10NumSys());
         }
     }
 }

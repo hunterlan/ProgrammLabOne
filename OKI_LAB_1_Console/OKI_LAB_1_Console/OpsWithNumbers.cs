@@ -26,7 +26,7 @@ namespace OKI_LAB_1_Console
         public string TransformFrom10NumSysTo2NumSys()
         {
 
-            UInt64 copiedNum = nums.Number;
+            UInt64 copiedNum = UInt64.Parse(nums.Number);
             char[] temp;
             string result = "";
 
@@ -80,7 +80,7 @@ namespace OKI_LAB_1_Console
 
                 if (tempResult == 0 && i != 2)
                 { results.Add(tempResult1); }
-                else if(i == 2)
+                else if (i == 2)
                 {
                     i = 0;
                     tempResult1 = 0;
@@ -91,10 +91,89 @@ namespace OKI_LAB_1_Console
                 }
             }
             results.Reverse(0, results.Count);
-            foreach(UInt64 nums in results)
+            foreach (UInt64 nums in results)
             {
                 result += nums.ToString();
             }
+            return result;
+        }
+
+        public string TransformFrom10NumSysTo16NumSys()
+        {
+            string result = "";
+            UInt64 copiedNum = UInt64.Parse(nums.Number);
+
+            List<UInt64> resultDividing = new List<UInt64>();
+
+            while(copiedNum > 0
+)
+            {
+                resultDividing.Add(copiedNum % 16);
+                copiedNum /= 16;
+            }
+
+            resultDividing.Reverse();
+            foreach(UInt64 num in resultDividing)
+            {
+                if(num > 9)
+                {
+                    switch(num)
+                    {
+                        case 10:
+                            {
+                                result += 'A';
+                            }break;
+                        case 11:
+                            {
+                                result += 'B';
+                            }break;
+                        case 12:
+                            {
+                                result += 'C';
+                            }break;
+                        case 13:
+                            {
+                                result += 'D';
+                            }break;
+                        case 14:
+                            {
+                                result += 'E';
+                            }break;
+                        case 15:
+                            {
+                                result += 'F';
+                            }break;
+                    }
+                }
+                else
+                {
+                    result += num.ToString();
+                }
+            }
+
+            return result;
+        }
+
+        public string TransformFrom2NumSysTo10NumSys()
+        {
+            string result = "";
+
+            int tempResult = 0;
+
+            UInt64 copiedNum = UInt64.Parse(nums.Number);
+
+            int i = 0;
+
+            while(copiedNum > 0)
+            {
+                if(copiedNum % 10 == 1)
+                { tempResult += (Int32)System.Math.Pow(2, i); }
+                copiedNum /= 10;
+                i++;
+            }
+
+            result = tempResult.ToString();
+
             return result;
         }
 
@@ -104,22 +183,75 @@ namespace OKI_LAB_1_Console
 
             List<UInt64> results = new List<UInt64>();
 
-            UInt64 numcopied = nums.Number, tempResult = 0;
+            UInt64 numcopied = UInt64.Parse(nums.Number), tempResult = 0;
 
-            while(numcopied > 0)
+            while (numcopied > 0)
             {
                 results.Add(numcopied % 10);
                 numcopied /= 10;
             }
             results.Reverse();
             int j = 0;
-            for(int i = results.Count; i > 0; i--)
+            for (int i = results.Count; i > 0; i--)
             {
-                tempResult += results[j] * (UInt64)Math.Pow(8, i-1);
-                
+                tempResult += results[j] * (UInt64)Math.Pow(8, i - 1);
+
                 j++;
             }
+
             result += tempResult.ToString();
+            return result;
+        }
+
+        public string TransformFrom16NumSysTo10NumSys()
+        {
+            string result = "", copiedNumber = nums.Number;
+            int tempResult = 0, check = 0;
+            
+            for(int i = 0; i < copiedNumber.Length; i++)
+            {
+                if(!Int32.TryParse(copiedNumber[i].ToString(), out check))
+                {
+                    switch (copiedNumber[i])
+                    {
+                        case 'A':
+                            {
+                                tempResult += 10 * (int)System.Math.Pow(16, copiedNumber.Length - i - 1);
+                            }
+                            break;
+                        case 'B':
+                            {
+                                tempResult += 11 * (int)System.Math.Pow(16, copiedNumber.Length - i - 1);
+                            }
+                            break;
+                        case 'C':
+                            {
+                                tempResult += 12 * (int)System.Math.Pow(16, copiedNumber.Length - i - 1);
+                            }
+                            break;
+                        case 'D':
+                            {
+                                tempResult += 13 * (int)System.Math.Pow(16, copiedNumber.Length - i - 1);
+                            }
+                            break;
+                        case 'E':
+                            {
+                                tempResult += 14 * (int)System.Math.Pow(16, copiedNumber.Length - i - 1);
+                            }
+                            break;
+                        case 'F':
+                            {
+                                tempResult += 15 * (int)System.Math.Pow(16, copiedNumber.Length - i - 1);
+                            }
+                            break;
+                    }
+                }
+                else
+                {
+                    tempResult += Int32.Parse(copiedNumber[i].ToString()) * (int)System.Math.Pow(16, copiedNumber.Length - i - 1);
+                }
+            }
+            result = tempResult.ToString();
             return result;
         }
     }

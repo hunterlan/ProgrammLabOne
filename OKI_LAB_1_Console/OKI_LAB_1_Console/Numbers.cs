@@ -9,7 +9,7 @@ namespace OKI_LAB_1_Console
     class Numbers
     {
         private UInt64 startedNumSystem, finishedNumSystem;
-        public UInt64 Number { get; set; }
+        public string Number { get; set; }
 
         public UInt64 StartedNumSystem
         {
