@@ -15,14 +15,22 @@ namespace OKI_LAB_1
         {
             set
             {
-                if(value != 2 && value != 8 && value != 10 && value != 16)
+                try
                 {
-                    //Calling exception
+                    if (value != 2 && value != 8 && value != 10 && value != 16)
+                    {
+                        throw new Exception("Нельзя выбирать другую систему исчесления\n");
+                    }
+                    else
+                    {
+                        startedNumSystem = (UInt64)value;
+                    }
                 }
-                else
+                catch(Exception exc)
                 {
-                    startedNumSystem = (UInt64)value;
+                    Exceptions.ShowException(exc);
                 }
+                
             }
             get { return startedNumSystem; }
         }
@@ -31,17 +39,24 @@ namespace OKI_LAB_1
         {
             set
             { 
-                if(value == startedNumSystem)
+                try
                 {
-                    //Calling other type exception
+                    if (value == startedNumSystem)
+                    {
+                        throw new Exception("Система исчеления не может быть равна самой себе");
+                    }
+                    else if (value != 2 && value != 8 && value != 10 && value != 16)
+                    {
+                        throw new Exception("Нельзя выбирать другую систему исчесления\n");
+                    }
+                    else
+                    {
+                        finishedNumSystem = (UInt64)value;
+                    }
                 }
-                else if (value != 2 && value != 8 && value != 10 && value != 16)
+                catch(Exception exc)
                 {
-                    //Calling exception
-                }
-                else
-                {
-                    finishedNumSystem = (UInt64)value;
+                    Exceptions.ShowException(exc);
                 }
             }
             get { return finishedNumSystem; }

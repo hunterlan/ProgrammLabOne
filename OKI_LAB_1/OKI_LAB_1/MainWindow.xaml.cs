@@ -30,75 +30,131 @@ namespace OKI_LAB_1
             string result = "";
             Numbers num = new Numbers();
             OpsWithNumbers ops;
-            num.Number = Number.Text;
-            switch (FirstNumSys.SelectedIndex)
+            
+            try
             {
-                case 0:
-                    {
-                        num.StartedNumSystem = 2;
-                    } break;
-                case 1:
-                    {
-                        num.StartedNumSystem = 8;
-                    } break;
-                case 2:
-                    {
-                        num.StartedNumSystem = 10;
-                    } break;
-                case 3:
-                    {
-                        num.StartedNumSystem = 16;
-                    } break;
+                if(Number.Text.Length == 0)
+                {
+                    throw new Exception("Пустое поле ввода");
+                }
+                else
+                {
+                    num.Number = Number.Text;
+                }
+                switch (FirstNumSys.SelectedIndex)
+                {
+                    case 0:
+                        {
+                            num.StartedNumSystem = 2;
+                        }
+                        break;
+                    case 1:
+                        {
+                            num.StartedNumSystem = 8;
+                        }
+                        break;
+                    case 2:
+                        {
+                            num.StartedNumSystem = 10;
+                        }
+                        break;
+                    case 3:
+                        {
+                            num.StartedNumSystem = 16;
+                        }
+                        break;
+                }
+                switch (SecondNumSys.SelectedIndex)
+                {
+                    case 0:
+                        {
+                            num.FinishedNumSystem = 2;
+                        }
+                        break;
+                    case 1:
+                        {
+                            num.FinishedNumSystem = 8;
+                        }
+                        break;
+                    case 2:
+                        {
+                            num.FinishedNumSystem = 10;
+                        }
+                        break;
+                    case 3:
+                        {
+                            num.FinishedNumSystem = 16;
+                        }
+                        break;
+                }
+                ops = new OpsWithNumbers(num);
+                if (num.StartedNumSystem == 2 && num.FinishedNumSystem == 10)
+                {
+                    result = ops.TransformFrom2NumSysTo10NumSys();
+                }
+                else if (num.StartedNumSystem == 2 && num.FinishedNumSystem == 8)
+                {
+                    var tempResult = ops.TransformFrom2NumSysTo10NumSys();
+                    num.Number = tempResult;
+                    result = ops.TransformFrom8NumSysTo10NumSys();
+                }
+                else if (num.StartedNumSystem == 2 && num.FinishedNumSystem == 16)
+                {
+                    var tempResult = ops.TransformFrom2NumSysTo10NumSys();
+                    num.Number = tempResult;
+                    result = ops.TransformFrom10NumSysTo16NumSys();
+                }
+                else if (num.StartedNumSystem == 8 && num.FinishedNumSystem == 10)
+                {
+                    result = ops.TransformFrom8NumSysTo10NumSys();
+                }
+                else if (num.StartedNumSystem == 8 && num.FinishedNumSystem == 2)
+                {
+                    var tempResult = ops.TransformFrom8NumSysTo10NumSys();
+                    num.Number = tempResult;
+                    result = ops.TransformFrom10NumSysTo2NumSys();
+                }
+                else if (num.StartedNumSystem == 8 && num.FinishedNumSystem == 16)
+                {
+                    var tempResult = ops.TransformFrom8NumSysTo10NumSys();
+                    num.Number = tempResult;
+                    result = ops.TransformFrom10NumSysTo16NumSys();
+                }
+                else if (num.StartedNumSystem == 16 && num.FinishedNumSystem == 10)
+                {
+                    result = ops.TransformFrom16NumSysTo10NumSys();
+                }
+                else if (num.StartedNumSystem == 16 && num.FinishedNumSystem == 8)
+                {
+                    var tempResult = ops.TransformFrom16NumSysTo10NumSys();
+                    num.Number = tempResult;
+                    result = ops.TransformFrom10NumSysTo8NumSys();
+                }
+                else if (num.StartedNumSystem == 16 && num.FinishedNumSystem == 2)
+                {
+                    var tempResult = ops.TransformFrom16NumSysTo10NumSys();
+                    num.Number = tempResult;
+                    result = ops.TransformFrom10NumSysTo2NumSys();
+                }
+                else if (num.StartedNumSystem == 10 && num.FinishedNumSystem == 2)
+                {
+                    result = ops.TransformFrom10NumSysTo2NumSys();
+                }
+                else if (num.StartedNumSystem == 10 && num.FinishedNumSystem == 8)
+                {
+                    result = ops.TransformFrom10NumSysTo8NumSys();
+                }
+                else if (num.StartedNumSystem == 10 && num.FinishedNumSystem == 16)
+                {
+                    result = ops.TransformFrom10NumSysTo16NumSys();
+                }
+                Result.Text = result;
             }
-            switch (SecondNumSys.SelectedIndex)
+            catch(Exception exc)
             {
-                case 0:
-                    {
-                        num.FinishedNumSystem = 2;
-                    }
-                    break;
-                case 1:
-                    {
-                        num.FinishedNumSystem = 8;
-                    }
-                    break;
-                case 2:
-                    {
-                        num.FinishedNumSystem = 10;
-                    }
-                    break;
-                case 3:
-                    {
-                        num.FinishedNumSystem = 16;
-                    }
-                    break;
+                Exceptions.ShowException(exc);
             }
-            ops = new OpsWithNumbers(num);
-            if (num.StartedNumSystem == 2 && num.FinishedNumSystem == 10)
-            {
-                result = ops.TransformFrom2NumSysTo10NumSys();
-            }
-            else if (num.StartedNumSystem == 8 && num.FinishedNumSystem == 10)
-            {
-                result = ops.TransformFrom8NumSysTo10NumSys();
-            }
-            else if (num.StartedNumSystem == 16 && num.FinishedNumSystem == 10)
-            {
-                result = ops.TransformFrom16NumSysTo10NumSys();
-            }
-            else if(num.StartedNumSystem == 10 && num.FinishedNumSystem == 2)
-            {
-                result = ops.TransformFrom10NumSysTo2NumSys();
-            }
-            else if(num.StartedNumSystem == 10 && num.FinishedNumSystem == 8)
-            {
-                result = ops.TransformFrom10NumSysTo8NumSys();
-            }
-            else if(num.StartedNumSystem == 10 && num.FinishedNumSystem == 16)
-            {
-                result = ops.TransformFrom10NumSysTo16NumSys();
-            }
-            Result.Text = result;
+            
         }
     }
 }

@@ -24,7 +24,7 @@
             <TextBlock>Шестнадцатиричная</TextBlock>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="40,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Myanmar Text" FontStyle="Italic" FontSize="24"><Run Text="Результат"/><Run Text=":"/></TextBlock>
-        <TextBox HorizontalAlignment="Left" Height="24" Margin="189,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontFamily="Myanmar Text" FontSize="18" FontStyle="Italic" Name="Result"/>
+        <TextBox HorizontalAlignment="Left" IsEnabled="False" Height="24" Margin="189,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontFamily="Myanmar Text" FontSize="18" FontStyle="Italic" Name="Result" />
         <Button Content="Получить результат!" HorizontalAlignment="Left" Margin="555,192,0,0" VerticalAlignment="Top" Width="134" Height="37" Name="GetResult" Click="GetResult_Click"/>
 
     </Grid>
