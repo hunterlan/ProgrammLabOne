@@ -96,7 +96,7 @@ namespace OKI_LAB_1
                 {
                     var tempResult = ops.TransformFrom2NumSysTo10NumSys();
                     num.Number = tempResult;
-                    result = ops.TransformFrom8NumSysTo10NumSys();
+                    result = ops.TransformFrom10NumSysTo8NumSys();
                 }
                 else if (num.StartedNumSystem == 2 && num.FinishedNumSystem == 16)
                 {
