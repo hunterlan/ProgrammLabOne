@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OKI_LAB_1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="OKI_LAB_1" Height="450" Width="800">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="40,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Myanmar Text" FontStyle="Italic" FontSize="24"><Run Text="Выбери"/><Run Text="те"/><Run Text=" начальную"/><Run Text=" сист"/><Run Text="е"/><Run Text="му исчесления"/></TextBlock>
         <ComboBox HorizontalAlignment="Left" Margin="539,40,0,0" VerticalAlignment="Top" Width="120" FontSize="18" FontFamily="Myanmar Text" Name="FirstNumSys">
@@ -24,7 +24,7 @@
             <TextBlock>Шестнадцатиричная</TextBlock>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="40,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Myanmar Text" FontStyle="Italic" FontSize="24"><Run Text="Результат"/><Run Text=":"/></TextBlock>
-        <TextBox HorizontalAlignment="Left" IsEnabled="False" Height="24" Margin="189,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontFamily="Myanmar Text" FontSize="18" FontStyle="Italic" Name="Result" />
+        <TextBox HorizontalAlignment="Left" IsEnabled="False" Height="24" Margin="189,198,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="308" FontFamily="Myanmar Text" FontSize="18" FontStyle="Italic" Name="Result" />
         <Button Content="Получить результат!" HorizontalAlignment="Left" Margin="555,192,0,0" VerticalAlignment="Top" Width="134" Height="37" Name="GetResult" Click="GetResult_Click"/>
 
     </Grid>
